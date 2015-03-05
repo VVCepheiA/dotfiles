@@ -45,6 +45,11 @@ Plugin 'gmarik/Vundle.vim'
 " Avoid a name conflict with L9
 " Plugin 'user/L9', {'name': 'newL9'}
 Plugin 'scrooloose/nerdtree'
+" map a specific key or shortcut to open NERDTree
+map <C-n> :NERDTreeToggle<CR>
+" close vim if the only window left open is a NERDTree
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -62,3 +67,6 @@ filetype plugin indent on    " required
 " Put your non-Plugin stuff after this line
 
 "=================================== Vundle ==================================
+let @f = 'gg=G'
+let @s = ':%s/SELECT/\rSELECT/g | :%s/FROM/\rFROM/g | :%s/WHERE/\rWHERE/g | :%s/JOIN/\rJOIN/g | :%s/ORDER BY/\rORDER BY/g | :%s/UNION/\rUNION\r/g | :%s/GROUP BY/\rGROUP BY/g' 
+let @c = 'gg"*yG'
